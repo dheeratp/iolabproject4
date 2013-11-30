@@ -1,0 +1,101 @@
+<!doctype html>
+
+<html>
+    
+    <head>
+        <title>Meta Genie</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!--responsive layout-->
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="description">
+        <meta name="keywords" content="keywords">
+
+        <!--CSS-->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet"href="css/main.css" >
+
+        <!--Javascript -->
+        <!-- libs -->
+        <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="js/jsrender.js"></script>
+        <script type="text/javascript" src="js/purl.js"></script>
+
+        <!-- and new libraries to use lastfm -->
+        <script type="text/javascript" src="js/lastfm.api.md5.js"></script>
+        <script type="text/javascript" src="js/lastfm.api.js"></script>
+        <script type`="text/javascript" src="js/lastfm.api.cache.js"></script>
+
+        <script type="text/javascript" src="js/main1.js"></script>
+
+        <!--JS Render templates-->
+        
+
+    <script id="lastfmTemplateArtistInfo" type="text/x-jsrender">
+        <div class="artist_info">
+            <a href="{{:url}}" rel="nofollow" target="_blank"><b>{{:name}}:</b><img src="{{:image[3]["#text"]}}" alt="{{:name}}" /></a>
+            <div><noindex>
+                {{:bio.content}}
+            </noindex></div>
+        </div>
+    </script>
+
+    <script id="lastfmTemplateTracks" type="text/x-jsrender">
+        
+        <div class="track">
+            <b>{{:name}}</b></a>
+        </div>
+    </script>
+
+<!--
+album
+creator
+image
+title -->
+        
+    </head>
+    
+    <body>
+    <div class="container">
+        <nav>
+            <header>
+                <div class="row">
+                    <div class="well">
+                        <div id="loggedin" class="right"><span class="fui-gear"></span></div>
+                        <h1>Meta Genie  </h1>
+                            <span><small>The rockstar concierge that #Enhances, #Organizes, and #Discovers music using your Last.fm account.</small></span><br/>
+                        <div class="page-header" id="connect-div">
+                                <!-- ID = connect for the Connect btn -->
+                                <a class="btn btn-success btn-lg" id="connect">Activate LastFM Genie  &raquo;</a>
+                            </p>
+                        </div><!--page-header-->
+                    </div><!--well-->
+                </div><!--row-->
+            </header>
+        </nav>
+        
+        <div class="row content">
+                    <div class="span12">
+                        
+                        <div class="row">
+                            
+                            <div class="span5 left"> 
+                                <h4>Top tracks</h4>
+                                <div class="content-body-inner" id="top_tracks"></div>
+                                <hr/>
+                            </div><!--span5-->
+
+                        </div><!--row scaffolding-->
+                    </div><!--span12-->
+                </div><!--row-->
+
+
+        
+        <hr>
+        
+    </div>
+        <!-- /container -->
+    </body>
+    
+</html>
