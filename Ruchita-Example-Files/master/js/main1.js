@@ -23,21 +23,17 @@ var i=0;
  $(window).load(function() {
 
 
-    for (i = 0; i < country_names.length; i = i + 1 ) {
-      getTopTracks(country_names[ i ], i);
-      
-  }
-    if(i>country_names.length){
-        console.log("Inside rendertracks");
-        renderTopTracks(TOPTRACKS);
-        console.log(TOPTRACKS);
+    main();
+    renderTopTracks(TOPTRACKS);
 
-    }
+
+    
+        
+    
     
 
 
     var topArtistName = '';
-   // main();
     
 
 
@@ -46,7 +42,12 @@ var i=0;
 
  function main(){
 
-    getTopTracks(country);
+    for (i = 0; i < country_names.length; i = i + 1 ) {
+      getTopTracks(country_names[ i ], i);
+
+  }
+  
+
 
  }
 
@@ -59,23 +60,27 @@ var i=0;
         success: function(data) {
 
             var obj = {
-                mbid: data.toptracks.track.mbid,
-                url: data.toptracks.track.url,
-                name: data.toptracks.track.name,
-                country: country,
-                artist: {
+                "mbid": data.toptracks.track.mbid,
+                "url": data.toptracks.track.url,
+                "name": data.toptracks.track.name,
+                "country": country,
+                "artist": {
                     mbid:data.toptracks.track.artist.mbid,
                     name:data.toptracks.track.artist.name,
                     url:data.toptracks.track.artist.url
                 },
-                image:data.toptracks.track.image[0],
-                listeners:data.toptracks.track.listeners
+                "image":data.toptracks.track.image[0],
+                "listeners":data.toptracks.track.listeners
 
 
             };
-            console.log(obj);
+            //console.log(obj);
 
-            TOPTRACKS[i] = obj[i];
+
+            $.extend(TOPTRACKS, obj);
+            //console.log("TOPTRACKS");
+            //console.log(TOPTRACKS);
+
             
         },
         error: function(data) {
@@ -85,6 +90,8 @@ var i=0;
     }
 
  function renderTopTracks(data){
+    console.log("Inside render tracks");
+    console.log(TOPTRACKS);
     lastfm.geo.getTopTracks({
         country:country,
         limit: 1
