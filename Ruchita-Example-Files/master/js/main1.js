@@ -15,86 +15,73 @@
 var country = 'united states';
 var country_names=["UNITED STATES", "UNITED KINGDOM", "INDIA", "BRAZIL", "AUSTRALIA"];
 var TOPTRACKS = [];
-var i=0;
+
+var getDataDone = $.Deferred();
 
 
 
 // on page load
- $(window).load(function() {
+ $(window).load(function () {
+   getData();
+   $.when(getDataDone).then(function(){
 
+    console.log("Deferred flag");
 
-    var getAllTracks = main();
-    $.when(getAllTracks).then(
-        function(){
-            console.log("printing getAllTracks");
-            console.log(getAllTracks);
+   }
 
-        });
-
-    
-    /*$.when(getAllTracks)
-      .pipe(renderTopTracks(TOPTRACKS));*/
-      var topArtistName = '';
-    
-
-
+    )
 
 });
 
- function main(){
 
-    for (i = 0; i < country_names.length; i = i + 1 ) {
-      getTopTracks(country_names[ i ], i);
+ function getData(){
+    
 
-  }
+    $.ajax({
+            type: 'GET',
+            async: false,
+            success:handleDatavar
+            
+    })
+    
+    }
+
+ var handleDatavar=function handleData(){
+    var i=0;
+    for (i = 0; i < country_names.length; i = i + 1 ) 
+    {
+      getTopTracks(country_names[i]);
+      
+    }
+
+    }
+
+
+ function getTopTracks(country){
   
-
-
- }
-
- function getTopTracks(country, i){
-    lastfm.geo.getTopTracks({
-        country:country,
-        limit: 1
+    lastfm.geo.getTopTracks
+    ({
+        country:country
     },
     {
         success: function(data) {
-
-            /*var obj = {
-                "mbid": data.toptracks.track.mbid,
-                "url": data.toptracks.track.url,
-                "name": data.toptracks.track.name,
-                "country": country,
-                "artist": {
-                    mbid:data.toptracks.track.artist.mbid,
-                    name:data.toptracks.track.artist.name,
-                    url:data.toptracks.track.artist.url
-                },
-                "image":data.toptracks.track.image[0],
-                "listeners":data.toptracks.track.listeners
-
-
-            };*/
-            //console.log(obj); 
             TOPTRACKS.push(data);
-            console.log(TOPTRACKS);
-            
-                //$.extend(TOPTRACKS, data);
-            
+            console.log(TOPTRACKS); 
+            if (TOPTRACKS.length==country_names.length){
+                        getDataDone.resolve(); 
 
-             
-            //console.log("TOPTRACKS");
-            //console.log(TOPTRACKS);
+            }
 
-            
-        },
+         },
         error: function(data) {
             console.log("getTopTracks: " + data.error + " " + data.message);
         }
+
     });
+
     }
 
- function renderTopTracks(data){
+ var DISPLAYTOPTRACKS = function renderTopTracks(){
     console.log("Inside render tracks");
     console.log(TOPTRACKS);
     lastfm.geo.getTopTracks({
@@ -102,17 +89,24 @@ var i=0;
         limit: 1
     },
     {
-        success: function(data) {
+        success: function() 
+        {
             //console.log("top artists");
-            console.log(data);
-            $.each( TOPTRACKS, function( key, value ) {
+            $.each( TOPTRACKS, function( key, value ) 
+            {
+
             console.log( TOPTRACKS );
-            });
-           $('#top_tracks').html( $('#lastfmTemplateTracks').render(data.artist));
-            // do something
+
+
+            }
+            );
+
+           /*$('#top_tracks').html( $('#lastfmTemplateTracks').render(data.track[i]));
+            // do something*/
         },
-        error: function(data) {
-            console.log("getTopArtists: " + data.error + " " + data.message);
+        error: function() 
+        {
+            console.log("getTopArtists: ");
         }
     });
     }
