@@ -1,3 +1,4 @@
+/*---Variables------*/
 // define api keys
     var apiKey = 'ef52d33ae515465c74fe383a71089f43';
     var apiSecret = '2ac7e97f4fff53f76ecd2f5f376e71a3';
@@ -15,50 +16,36 @@
 var country = 'united states';
 var country_names=["UNITED STATES", "UNITED KINGDOM", "INDIA", "BRAZIL", "AUSTRALIA"];
 var TOPTRACKS = [];
-
+//deferred object: Indicates that all TOPTRACKS are processed
 var getDataDone = $.Deferred();
 
 
 
-// on page load
- $(window).load(function () {
-   getData();
-   $.when(getDataDone).then(function(){
-
-    console.log("Deferred flag");
-
-   }
-
-    )
-
+/*---Page Load------*/
+$(window).load(function () {
+    getData();
+    $.when(getDataDone).then(function(){
+        console.log("Tracks processing complete ");
+        console.log("Integration Point - RenderData Fn here");
+        //TODO - Invoke renderData here
+    })
 });
 
 
- function getData(){
-    
-
+function getData(){
     $.ajax({
-            type: 'GET',
-            async: false,
-            success:handleDatavar
-            
-    })
-    
-    }
+        success:handleDatavar
+ })
+}
 
- var handleDatavar=function handleData(){
-    var i=0;
-    for (i = 0; i < country_names.length; i = i + 1 ) 
-    {
+var handleDatavar=function handleData() {
+    for (var i = 0; i < country_names.length; i = i + 1 ) {
       getTopTracks(country_names[i]);
-      
     }
+}
 
-    }
 
-
- function getTopTracks(country){
-  
+function getTopTracks(country){
     lastfm.geo.getTopTracks
     ({
         country:country
@@ -68,18 +55,14 @@ var getDataDone = $.Deferred();
             TOPTRACKS.push(data);
             console.log(TOPTRACKS); 
             if (TOPTRACKS.length==country_names.length){
-                        getDataDone.resolve(); 
-
+                getDataDone.resolve(); 
             }
-
-         },
+        },
         error: function(data) {
             console.log("getTopTracks: " + data.error + " " + data.message);
         }
-
     });
-
-    }
+}
 
  var DISPLAYTOPTRACKS = function renderTopTracks(){
     console.log("Inside render tracks");
