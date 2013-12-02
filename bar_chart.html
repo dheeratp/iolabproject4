@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Track', 'Popularity',  { role: 'style' }],
+          ['xxx',   820, '#67A2B9'],
+          ['xxx',   639, '#A7C439'],
+          ['xxx',   636, '#FFC425'],
+          ['xxx',   604, '#67A2B9'],
+          ['xxx',   564, '#67A2B9'],
+          ['xxx',  544, '#67A2B9'],
+          ['xxx',  534, '#67A2B9'],
+          ['xxx',    512, '#A7C439'],
+          ['xxx',   511, '#67A2B9'],
+          ['xxx',    486, '#67A2B9'],
+          ['xxx',    483, '#F6851F'],
+          ['xxx',    475, '#CD383F'],
+          ['xxx',    461, '#67A2B9'],
+          ['xxx',    460, '#A7C439'],
+          ['xxx',    449, '#7D3953'],
+          ['xxx',    443, '#ccc'],
+          ['xxx',   436, '#A7C439'],
+          ['xxx',    432, '#67A2B9'],
+        ]);
+
+        var options = {
+          title: 'Top Tracks in Madrid',
+          hAxis: {title: 'Tracks', titleTextStyle: {color: '#ccc'}}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
