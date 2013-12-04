@@ -1,0 +1,22 @@
+ /*var Metro1={};
+    var Metro2=[];
+   
+    $.each( METROS, function( key, value ) {
+        $.extend(Metro1,value);
+        console.log(Metro1);  
+     });
+    $.each( Metro1, function( key, value ) {
+        console.log(value);  
+        Metro2.push(value);
+        console.log(Metro2);
+     });*/
+
+
+$.each(METROS,function(){
+    $.each(this.metro,function(){
+        console.log("Metro Data");
+        console.log(this);
+
+    });
+    
+});

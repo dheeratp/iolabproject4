@@ -18,20 +18,60 @@ var country_names=["UNITED STATES", "UNITED KINGDOM", "INDIA", "BRAZIL", "AUSTRA
 var TOPTRACKS = [];
 //deferred object: Indicates that all TOPTRACKS are processed
 var getDataDone = $.Deferred();
-
+//deferred object: Indicates that all Metros are processed
+var getMetroDataDone = $.Deferred();
+var METROS={};
 
 
 /*---Page Load------*/
 $(window).load(function () {
-    getData();
+
+    getMetroData();
+    
+    $.when(getMetroDataDone).then(function(){
+        console.log("Got Metro Data ");
+        getData();
+    })
+
+    
     $.when(getDataDone).then(function(){
         console.log("Tracks processing complete ");
         console.log("Integration Point - RenderData Fn here");
         //TODO - Invoke renderData here
     })
+    
+
 });
 
+function getMetroData(){
+      $.ajax({
+        success:handleMetroDatavar
+ })
 
+}
+
+var handleMetroDatavar=function getMetros(){
+    lastfm.geo.getMetros
+    ({
+        api_key:apiKey
+    },
+    {
+        success: function(data) {
+            console.log("getmetros");
+            $.extend(METROS, data );
+            //console.log(METROS);
+            getMetroDataDone.resolve(); 
+            
+        },
+        error: function(data) {
+            console.log("getMetros: " + data.error + " " + data.message);
+        }
+    });
+
+}
+
+
+/*Assembles the Data for top tracks */
 function getData(){
     $.ajax({
         success:handleDatavar
@@ -39,9 +79,12 @@ function getData(){
 }
 
 var handleDatavar=function handleData() {
-    for (var i = 0; i < country_names.length; i = i + 1 ) {
-      getTopTracks(country_names[i]);
-    }
+
+   var metro=METROS.metros.metro;
+    $.each(metro, function(i, object) {
+    //console.log(object.name);
+    getTopTracks(object.country);
+    });
 }
 
 
@@ -53,8 +96,8 @@ function getTopTracks(country){
     {
         success: function(data) {
             TOPTRACKS.push(data);
-            console.log(TOPTRACKS); 
-            if (TOPTRACKS.length==country_names.length){
+            //console.log(TOPTRACKS); 
+            if (TOPTRACKS.length==METROS.metros.metro.length){
                 getDataDone.resolve(); 
             }
         },
@@ -64,7 +107,7 @@ function getTopTracks(country){
     });
 }
 
- var DISPLAYTOPTRACKS = function renderTopTracks(){
+ var renderTopTracksVar = function renderTopTracks(){
     console.log("Inside render tracks");
     console.log(TOPTRACKS);
     lastfm.geo.getTopTracks({
