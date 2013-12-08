@@ -2,6 +2,9 @@
 <meta charset="utf-8">
 <style>
 
+.chart {
+	margin-top: 20px;
+}
 .popularity {
 	font: 16px sans-serif;
 	text-anchor: end;
@@ -17,6 +20,10 @@
 	font-family: "Helvetica";
 }
 
+a:hover {
+	fill:white;
+}
+
 .track {
 	font: 14px sans-serif;
 	font-weight: bold;
@@ -25,8 +32,9 @@
 .artist {
 	font: 12px sans-serif;
 }
-
 </style>
+
+<h2>Top 10 Tracks in XXX</h2>
 <svg class="chart"></svg>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
@@ -93,14 +101,18 @@ bar.append("image")
 	.attr("class","album-art");
 
 // Add track title
-bar.append("text")
+bar.append("svg:a")
+    .attr("xlink:href", "http://www.playsong.com")
+		.append("text")
     .text(function(d) { return d.name; })
     .attr("class", "track")
     .attr("x", "5")
     .attr("y", "30");
 
 // Add artist name
-bar.append("text")
+bar.append("svg:a")
+    .attr("xlink:href", "http://www.lastfmprofile.com")
+    .append("text")
     .text(function(d) { return d.artist.name; })
     .attr("class", "artist")
     .attr("x", "5")
