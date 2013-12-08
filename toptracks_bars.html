@@ -5,6 +5,7 @@
 .popularity {
 	font: 16px sans-serif;
 	text-anchor: end;
+	fill: white;
 }
 
 .album-art {
@@ -65,11 +66,16 @@ var bar = chart.selectAll("g")
   .enter().append("g")
     .attr("transform", function(d, i) { return "translate(100," + i * barHeight + ")"; });
 
+
+
 // Draw bars
 bar.append("rect")
+    .attr("fill", function(d) {return color(uniqueArtist.indexOf(d.artist.name))})
+    .attr("width", 0)
+    .transition()
+    .duration(1000)
     .attr("width", function(d) { return x(Number(d.listeners))})
-    .attr("height", barHeight - 1)
-    .attr("fill", function(d) {return color(uniqueArtist.indexOf(d.artist.name))});
+    .attr("height", barHeight - 1);
 
 // Add listen count
 bar.append("text")
