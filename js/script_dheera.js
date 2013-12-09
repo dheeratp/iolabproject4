@@ -14,6 +14,8 @@ $(document).ready(function() {
   }).fail(function() {
     console.log("FIRST fail");
   });
+  
+
 });
 
 function initialize() {
@@ -44,4 +46,5 @@ function initialize() {
   }
 
 }
+
 
