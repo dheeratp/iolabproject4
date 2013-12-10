@@ -8,6 +8,12 @@ $(document).ready(function(){
         height: viewportHeight,
     });
 
+    $('#map-canvas').css({
+        width: viewportWidth,
+        height: viewportHeight,
+        zIndex:30,
+    });
+
     $('#info').css({
         left:(viewportWidth-300)/2,
     });

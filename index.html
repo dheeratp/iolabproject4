@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8"/>
-	    <title>Undercurrent</title>
+	    <title>Music Map</title>
 	    <meta name="Description" content="Explore top tracks across the globe."/>
 	    <meta name="viewport" content="width = device-width, initial-scale=1.0"/>
 	    <link rel="stylesheet" type="text/css" href="css/style-ad.css"/>
@@ -11,14 +11,42 @@
     	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
     	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+	    
+	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 	    <script src="js/jquery-1.10.2.min.js"></script>
+	    <script src="js/main1.js"></script>
 	    <script src="js/script-ad.js"></script>
+	    <script src="js/script_dheera.js"></script>
+	    <script src="js/jquery.js"></script>
+	    <script src="js/jsrender.js"></script>
+       	<script src="js/purl.js"></script>
+      	<!--new libraries to use lastfm -->
+        <script src="js/lastfm.api.md5.js"></script>
+        <script src="js/lastfm.api.js"></script>
+        <script src="js/lastfm.api.cache.js"></script>
 	</head>
 	<body>
+		<div id="map">
+			<div id="map-canvas"></div>
 
-		<div id="map">				
-			<div>
-				<ul id="legend">
+			<div id="infoWrapper"></div>
+
+			<div id="info">
+				<div>
+					<span id="infoClose">&#215;</span>
+					<h1>Music Map<h1>
+					<h2> Explore popular music around the globe</h2>
+					<p> Music Map is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
+				</div>
+				<div id="base">
+					<div id="exploreButton">
+						<p>Start Exploring!</p>
+					</div>
+				</div>
+			</div>
+			
+			<div id="legend">
+				<ul>
 					<li class="legendItem">
 						<span class="trackLegendColor" id="colorIndicator1"></span>
 						<p class="trackLegendName">Reflektor</p>
@@ -95,9 +123,13 @@
 				<span id="modalClose">X</span>
 			</div>
 
+			<div id="videoPlayer">
+				<p> Video player goes here</p>
 			</div>
 
-			<div id="timeSlider"></div>
+			<div id="timeSlider">
+				<p> Slider goes here</p>
+			</div>
 
 		</div>
 	</body>
