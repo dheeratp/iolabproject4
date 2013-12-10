@@ -256,7 +256,8 @@ html, body, #map-canvas {
 }
 
 #trackHoverCard {
-	width:160px;
+	width:260px;
+	height:160px;
 	background:#fff;
 	box-shadow: 1px 1px 3px #999;
 	position:absolute;
@@ -265,6 +266,7 @@ html, body, #map-canvas {
     display:none;
     opacity:0;
     z-index: 125;
+    padding: 10px;
 }
 
 #metroChartModal {
@@ -304,9 +306,9 @@ html, body, #map-canvas {
 }
 
 #trackHoverArt {
-	width:50px;
-	height:50px;
-	margin:5px;
+	width:100px;
+	height:100px;
+	margin-right:10px;
 	background:#ccc;
 	float:left;
 	position: relative;
@@ -323,7 +325,6 @@ html, body, #map-canvas {
 	color:#222;
 	font-weight: 400;
 	float:left;
-	padding-top: 5px;
 	width:100px;
 }
 
@@ -353,7 +354,7 @@ html, body, #map-canvas {
 #trackHoverPopularMetros{
 	float:left;
 	padding:5px;
-	line-height: 12px;
+	line-height: 24px;
 }
 
 #videoPlayer{
