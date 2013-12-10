@@ -28,7 +28,10 @@
 
 /*---Page Load------*/
 $(window).load(function () {
+    $('#ytapiplayer').show();
     console.log("doc load");
+    //TODO - Need to pass the artist and track on the click event in modal
+    loadPlayer("Lorde", "Royals");
 
     getMetroData();
 
@@ -179,22 +182,48 @@ function getMetroTrackCharts(country, city){
 }
 
 
-/*function getTopTracks(country){
-    lastfm.geo.getTopTracks({
-        country:country,
-        limit: 1
-    },
-    {
-        success: function(data) {
-            //console.log("top artists");
-            console.log(data);
-            $('#top_tracks').html(
-                $('#lastfmTemplateTracks').render(data.toptracks.track)
-            );
-            // do something
-        },
-        error: function(data) {
-            console.log("getTopArtists: " + data.error + " " + data.message);
+function loadPlayer(artist, track) {
+    var options = {
+      orderby: "relevance",
+      q: artist + " " + track,
+      "start-index": 1,
+      "max-results": 1,
+      v: 2,
+      alt: "json"
+    };
+
+
+    $.ajax({
+      url: 'http://gdata.youtube.com/feeds/api/videos',
+      method: 'get',
+      data: options,
+      dataType: 'json',
+      success: function(data) {
+
+        var player = document.getElementById('myytplayer');
+        var id = data.feed.entry[0].id["$t"];
+        var mId = id.split(':')[3];
+        // console.log(mId)
+
+        if (!player) {
+            var params = { allowScriptAccess: "always" };
+            var atts = { id: "myytplayer" };
+            swfobject.embedSWF("http://www.youtube.com/v/" + mId + "?enablejsapi=1&playerapiid=ytplayer&version=3&autoplay=1&autohide=0",
+                           "ytapiplayer", "300", "200", "8", null, null, params, atts);
+            // if we decide to show the video the height, which is currently "40," can be increased like "200"
+        } else {
+         
+          player.loadVideoById(mId, 0, "large");
         }
-    });
-    }*/
+
+
+    
+        $('#ytapiplayer').show();
+
+
+      },
+      error : function() {
+        console.log("error");
+      }
+      });
+}
