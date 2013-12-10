@@ -28,6 +28,7 @@
 
 /*---Page Load------*/
 $(window).load(function () {
+    console.log("doc load");
 
     getMetroData();
 
@@ -85,22 +86,24 @@ function getData(){
 var handleDatavar=function handleData() {
     var metro=METROS.metros.metro;
     $.each(metro, function(i, object) {
-    getTopTracks(object.country);
+        console.log()
+    getTopTracks(object.country, object.name);
     });
 }
 
-function getTopTracks(country){
+function getTopTracks(country, metro){
     lastfm.geo.getTopTracks
     ({
-        country:country
+        country:country,
+        location:metro
     },
     {
         success: function(data) {
             TOPTRACKS.push(data);
             console.log(TOPTRACKS); 
-            if (TOPTRACKS.length==METROS.metros.metro.length){
+            /*if (TOPTRACKS.length==METROS.metros.metro.length){
                 getDataDone.resolve(); 
-            }
+            }*/
         },
         error: function(data) {
             console.log("getTopTracks: " + data.error + " " + data.message);
