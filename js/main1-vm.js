@@ -77,9 +77,10 @@ function initialize() {
   // For each city make a new Circle. Can set color once the track data is available  
   for (var city in citymap) {
     var newCityCircle = {
-    path: google.maps.SymbolPath.CIRCLE,
-    strokeColor:'Green',
-    strokeWeight:8,
+        path: 'M 100 100 L 300 100 L 200 300 z',
+        strokeColor:'Green',
+        strokeWeight:6,
+        scale:.01
     }
 
     var populationOptions = {
