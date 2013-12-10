@@ -1,7 +1,10 @@
 $(document).ready(function(){
 
     var viewportWidth = $(window).width();
-    var viewportHeight = $(window).width();
+    var viewportHeight = $(window).height();
+    var infoHeight = $('#info').height();
+    var infoWidth = $('#info').width();
+
 
     $('#infoWrapper').css({
         width: viewportWidth,
@@ -15,15 +18,11 @@ $(document).ready(function(){
     });
 
     $('#info').css({
-        left:(viewportWidth-300)/2,
+        left:(viewportWidth-infoWidth)/2,
     });
 
-    $('#infoWrapper').animate({
-        opacity:1,
-    },300);
-
-    $('#info').animate({
-        top:60,
+    $('#info').delay(1200).animate({
+        top:120,
         opacity:1,
     },300);
 
@@ -33,10 +32,10 @@ $(document).ready(function(){
                 top:-350,
                 opacity:0,
             },300);
-            $('#infoWrapper').animate({
+            $('#infoWrapper').delay(400).animate({
                 opacity:0,
                 zIndex:70,
-            },600);
+            },300);
         }
     );
 
