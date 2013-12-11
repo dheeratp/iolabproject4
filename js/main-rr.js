@@ -24,7 +24,7 @@
     var obj={};
     var objtoptracks={};
     var toptrackslegend=[];
-    var colors=["#BF2EBD","#8460A6","#017DD0","#0600BD","#57EBFF","#6B008F","#FF1100","#FF8FC7","#0E0907","#AD9600","#6C3337","#FF7C0A","#D5BDFF","#936CA3","#CAFA19","#F5FF85","#9AA76C"];
+    var colors=["#E03A37","#eb7f30","#BF2EBD","#2cb2f1","#6B3F95","#f6e742","#E75CB1","#498ebc","#0600BD","#6C3337","#9CD8E0","#FF8FC7","#edaa5c","#c4adeb"];
     var latlngFile = 'json/metros_latlng.json';
     var citymap = {};
 
@@ -149,9 +149,12 @@ function initialize() {
 
              var newCityCircle = {
               path: 'M 100 100 L 300 100 L 200 300 z',
-              strokeColor: metrocolor,
-              strokeWeight:6,
-              scale:.01
+              fillColor: metrocolor,
+              fillOpacity: 0.8,
+              strokeColor: 'FFFFFF',
+              strokeWeight:2,
+              strokeOpacity:0.8,
+              scale:0.12
           }
 
           var populationOptions = {
