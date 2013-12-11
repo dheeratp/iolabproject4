@@ -48,7 +48,7 @@ table {
 }
 
 body {
-	background: #ccc;
+	background: #fff;
 	font-family: 'Open Sans';
 	font-size: 15px;
 	color:#666;
@@ -415,5 +415,54 @@ html, body, #map-canvas {
 	z-index: 150;
 	box-shadow: 1px 1px 3px #bbb;
 	display:none;
+}
+
+.chart {
+	margin-top: 0;
+}
+
+.popularity {
+	font: 12.5px sans-serif;
+	font-family: "Open Sans";
+	font-weight:100;
+	text-anchor: end;
+	fill: white;
+}
+
+.album-art {
+	opacity:0.1;
+}
+
+.count {
+	font:30px sans-serif;
+	font-family: "Open Sans";
+	font-weight:100;
+	fill:#666;
+}
+
+a:hover {
+	fill:#fff;
+}
+
+.track {
+	font: 12.5px sans-serif;
+	font-family: "Open Sans";
+	font-weight:300;
+	fill:#fff;
+}
+
+.artist {
+	font: 8px sans-serif;
+	font-family: "Open Sans";
+	font-weight:300;
+	fill:#fff;
+}
+
+h1 {
+	font-family: "Open Sans";
+	font-weight: 500;
+	font-size:22px;
+	color:#333;
+	padding:15px 0 20px 60px;
 }
 
