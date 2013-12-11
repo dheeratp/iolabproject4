@@ -137,7 +137,7 @@ function codeLatLng(latlng) {
               map: map
           });
           MAPDATA.push(results[1].formatted_address.split(',')[0]);
-          infowindow.setContent(results[1].formatted_address);
+          //infowindow.setContent(results[1].formatted_address);
           infowindow.open(map, marker);
         }
       } else {
