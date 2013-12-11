@@ -24,7 +24,7 @@
     var obj={};
     var objtoptracks={};
     var toptrackslegend=[];
-    var colors=["#eb7f30","#76cc31","#2cb2f1","#f6e742","#E03A37","#E75CB1","#BF2EBD","#6B3F95","#498ebc","#0600BD","#9CD8E0","#6B008F","#863f3a","#FF8FC7","#0E0907","#6C3337","#FF7C0A","#D5BDFF","#936CA3","#CAFA19","#F5FF85"];
+    var colors=["#E03A37","#eb7f30","#BF2EBD","#2cb2f1","#6B3F95","#f6e742","#E75CB1","#498ebc","#0600BD","#6C3337","#9CD8E0","#FF8FC7","#edaa5c","#c4adeb"];
     var latlngFile = 'json/metros_latlng.json';
     var citymap = {};
 
