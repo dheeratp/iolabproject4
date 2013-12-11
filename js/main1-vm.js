@@ -19,6 +19,7 @@
     var TOPTRACKS = [];
     var TOPCHARTS =[];
     var METROS={};
+    var MAPDATA=[];
 
     //deferred object: Indicates that all TOPTRACKS are processed
     var getDataDone = $.Deferred();
@@ -31,6 +32,10 @@ var latlngFile = 'json/metros_latlng.json';
 var ajaxConnections = 1;
 var citymap = {};
 var cityCircle;
+var geocoder;
+var map;
+var infowindow = new google.maps.InfoWindow();
+var marker;
 
 $(document).ready(function() {
   $.getJSON(latlngFile, function (datainner) {
@@ -66,12 +71,15 @@ $(document).ready(function() {
 //-------VM----------
 
 function initialize() {
+  
+  geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng(37.7002, -122.406);
   var mapOptions = {
     zoom: 3,
-    center: new google.maps.LatLng(37.7002, -122.406)
+    center: latlng
   };
 
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
+  map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
   // For each city make a new Circle. Can set color once the track data is available  
@@ -92,14 +100,47 @@ function initialize() {
     marker = new google.maps.Marker(populationOptions); //{
 
     // On click
-    google.maps.event.addListener(marker, 'click', function() {
-    window.alert("this div");
+    google.maps.event.addListener(marker, 'click', function(event) {
+        
+         window.alert("this div");
+         console.log("latlng");
+         console.log(latlng);
+         codeLatLng(latlng);
+        
+
     });
   }
 
 }
 
+function codeLatLng(latlng) {
+    console.log("codelatlng");
+    console.log("latlng in code fn");
+    console.log(latlng);
+    var input = latlng;
+    var lat = parseFloat(latlng.nb);
+    var lng = parseFloat(latlng.ob);
+    var latlng = new google.maps.LatLng(lat, lng);
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[1]) {
+          map.setZoom(5);
+          marker = new google.maps.Marker({
+              position: latlng,
+              map: map
+          });
+          MAPDATA.push(results[1].formatted_address.split(',')[0]);
+          infowindow.setContent(results[1].formatted_address);
+          infowindow.open(map, marker);
+        }
+      } else {
+        alert("Geocoder failed due to: " + status);
+      }
+    });
+  }
+
 //------VM--------
+
 
 
 //-----RR---------
