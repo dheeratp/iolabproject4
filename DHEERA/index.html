@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+	    <title>Music Map</title>
+	    <meta name="Description" content="Explore top tracks across the globe."/>
+	    <meta name="viewport" content="width = device-width, initial-scale=1.0"/>
+	    <link rel="stylesheet" type="text/css" href="css/style-ad.css"/>
+	    <link href='http://fonts.googleapis.com/css?family=Glegoo' rel='stylesheet' type='text/css'/>
+	    <link href='http://fonts.googleapis.com/css?family=Cutive' rel='stylesheet' type='text/css'>
+    	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+	    
+	    <!--
+	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+	    <script src="js/jquery-1.10.2.min.js"></script>
+	    <script src="js/main1.js"></script>
+	    <script src="js/script-ad.js"></script>
+	    <script src="js/script_dheera.js"></script>
+	    <script src="js/jquery.js"></script>
+	    <script src="js/jsrender.js"></script>
+       	<script src="js/purl.js"></script>
+
+        <!-- link to js file -->
+	    <script src="js/jquery-1.10.2.min.js"></script>
+	    <script src="js/bootstrap.min.js"></script>
+	    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	    <script type="text/javascript" src="js/d3.min.js"></script>
+	    <script src="js/jquery.mtz.monthpicker.js"></script>
+	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+	    <!-- and new libraries to use lastfm -->
+	    <script type="text/javascript" src="js/lastfm.api.cache.js"></script>
+	    <script type="text/javascript" src="js/lastfm.api.md5.js"></script>
+	    <script type="text/javascript" src="js/lastfm.api.js"></script>
+
+		<script src="js/jsrender.js"></script>
+		<script src="js/purl.js"></script>
+		<script src="js/script-ad.js"></script>
+		<script src="js/main-rr.js"></script>
+	</head>
+	
+	<body>
+		<div id="map">
+			<div id="map-canvas"></div>
+
+			<div id="infoWrapper"></div>
+
+			<div id="info">
+				<div>
+					<span id="infoClose">&#215;</span>
+					<h1>Music Map<h1>
+					<h2> Explore popular music around the globe</h2>
+					<p> Music Map is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
+				</div>
+				<div id="base">
+					<div id="exploreButton">
+						<p>Start Exploring!</p>
+					</div>
+				</div>
+			</div>
+
+			<div id="legendHeaderMin">
+				<p>&#12296;</p>
+				<p>Legend</p>
+			</div>
+			
+			<div id="legend">
+				<ul id="legendlist">
+					<div id="legendHeaderMax">
+						<p>&#12297;</p>
+						<p>Legend</p>
+					</div>
+		        </ul>
+			</div>
+
+			<div id="marker">
+				<div id="trackHoverCard">
+					<div class="trackHoverMeta">
+						<div id="trackHoverArt">
+							<span id="trackHoverPlay">Play Track</span>
+						</div>
+						<div id="trackHoverTitle">
+							<span id="trackHoverName">Reflektor</span>
+							<span id="trackHoverArtist">Arcade Fire</span>
+							<span class="tag">Rock</span>
+							<span class="tag">Pop</span>
+							<span class="tag">Indie</span>
+						</div>
+					</div>
+					<div class="trackHoverMeta">
+						<p id="trackHoverPopularMetros">Popular in San Francisco, New York, London and 4 other cities.</p>
+					</div>
+				</div>
+			</div>
+
+			<div id="metroChartModal">
+				<iframe src="toptracks_bars.html" width="700px" height="500px"></iframe>
+				<span id="modalClose">X</span>
+			</div>
+
+			<div id="videoPlayer">
+				<p> Video player goes here. Div appears only upon clicking a track link.</p>
+
+				<div id="ytapiplayer" class="video-js" controls preload="auto">
+
+			</div>
+
+			<div id="timeSlider">
+				<p> Slider goes here</p>
+			</div>
+
+		</div>
+		<script src='js/swfobject.js' type='text/javascript'></script>
+		<script src="js/main-rr.js"></script>
+
+	</body>
+</html>

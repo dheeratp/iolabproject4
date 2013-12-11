@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        
+
+        var nydata = google.visualization.arrayToDataTable([
+          ['Artist', 'Popularity'],
+          ['Arcade Fire',     7035],
+          ['Lorde',      3603],
+          ['Blood Orange',  2281],
+          ['Arctic Monkeys',   2147],
+          ['CHVRCHES', 1666],
+          ['Haim',    1189],
+          ['Lady Gaga',    889],
+          ['Kanye West',    764],
+          ['Katy Perry',    471],
+          ['Miley Cyrus',    463],
+          ['Drake',    442],
+          ['Eminem',    425],
+          ['Imagine Dragons',    424],
+          ['M83',    390],
+          ['One Republic',    384],
+          ['Ellie Goulding',    362],
+          ['Bastille',    357],
+          ['AWOLNATION',    348],
+        ]);
+
+        var nyoptions = {
+          title: 'New York - 23640 Listeners',
+          pieHole: 0.6,
+          pieSliceText: 'none',
+          pieSliceBorderColor: 'none',
+          fontSize:8,
+        };
+
+        var sfdata = google.visualization.arrayToDataTable([
+          ['Artist', 'Popularity'],
+          ['Arcade Fire',     1984],
+          ['Blood Orange',  1705],
+          ['Lorde',      1684],
+          ['CHVRCHES', 1336],
+          ['M83',    958],
+          ['Haim',    293],
+          ['Lady Gaga',    151],
+          ['Katy Perry',    133],
+          ['Drake',    171],
+        ]);
+
+        var sfoptions = {
+          title: 'San Francisco - 8415 Listeners',
+          pieHole: 0.6,
+          pieSliceText: 'none',
+          pieSliceBorderColor: 'none',
+          fontSize:8,
+        };
+
+        var cgdata = google.visualization.arrayToDataTable([
+          ['Artist', 'Popularity'],
+          ['Arcade Fire',     2272],
+          ['Blood Orange',  1136],
+          ['Lorde',      1227],
+          ['CHVRCHES', 737],
+          ['Haim',    369],
+          ['Eminem',   206],
+          ['Drake',    144],
+          ['Lady Gaga',    132],
+          ['Katy Perry',    120],
+          ['M83',    107],
+          ['M.I.A',    105],
+          ['Arctic Monkeys',    102],
+          ['Neighborhood',   99],
+          ['Kanye West',    98],
+        ]);
+
+        var cgoptions = {
+          title: 'Chicago - 6854 Listeners',
+          pieHole: 0.6,
+          pieSliceText: 'none',
+          pieSliceBorderColor: 'none',
+          fontSize:8,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('nychart'));
+        chart.draw(nydata, nyoptions);
+
+        var chart = new google.visualization.PieChart(document.getElementById('sfchart'));
+        chart.draw(sfdata, sfoptions);
+
+        var chart = new google.visualization.PieChart(document.getElementById('cgchart'));
+        chart.draw(cgdata, cgoptions);
+
+      }
+    </script>
+  </head>
+  <body>
+    <div id="nychart" style="width: 900px; height:500px; float:left"></div>
+    <div id="sfchart" style="width: 900px; height:500px; float:left"></div>
+    <div id="cgchart" style="width: 900px; height:500px; float:left"></div>
+    
+  </body>
+</html>
