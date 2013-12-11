@@ -11,6 +11,26 @@ $(document).ready(function(){
         height: viewportHeight,
     });
 
+    $('#legend').hide();
+
+    $('#legendHeaderMin').click(
+        function(){
+            $(this).css({
+                display:'none',
+            });
+            $('#legend').toggle(100);
+        }
+    );
+
+    $('#legendHeaderMax').click(
+        function(){
+            $('#legendHeaderMin').css({
+                display:'block',
+            });
+            $('#legend').toggle(100);
+        }
+    );
+
     $('#map-canvas').css({
         width: viewportWidth,
         height: viewportHeight,
