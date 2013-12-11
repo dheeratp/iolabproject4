@@ -434,10 +434,10 @@ html, body, #map-canvas {
 }
 
 .count {
-	font:30px sans-serif;
+	font:16px sans-serif;
 	font-family: "Open Sans";
 	font-weight:100;
-	fill:#666;
+	fill:#333;
 }
 
 a:hover {

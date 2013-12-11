@@ -63,9 +63,8 @@ bar.append("text")
     .attr("class", "popularity");
 
 // Add album cover image
-bar.append("rect")
-	.attr("fill", "function(d) {return color(uniqueArtist.indexOf(d.artist.name))}")
-    .attr("opacity", 0.8)
+bar.append("image")
+	.attr("xlink:href", function(d) {return d.image[1]['#text'];})
 	.attr("width","40")
 	.attr("height","40")
 	.attr("x", "-40")
@@ -92,8 +91,8 @@ bar.append("svg:a")
 // Add chart position number
 bar.append("text")
     .text(function(d,i) { return i+1; })
-    .attr("x", "-35")
-    .attr("y", "36")
+    .attr("x", "-34")
+    .attr("y", "19")
     .attr("class", "count");
 
 </script>
