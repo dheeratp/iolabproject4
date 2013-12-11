@@ -12,6 +12,7 @@
     	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
 	    
+	    <!--
 	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 	    <script src="js/jquery-1.10.2.min.js"></script>
 	    <script src="js/main1.js"></script>
@@ -20,11 +21,31 @@
 	    <script src="js/jquery.js"></script>
 	    <script src="js/jsrender.js"></script>
        	<script src="js/purl.js"></script>
-      	<!--new libraries to use lastfm -->
         <script src="js/lastfm.api.md5.js"></script>
         <script src="js/lastfm.api.js"></script>
         <script src="js/lastfm.api.cache.js"></script>
+        -->
+
+        <!-- link to js file -->
+	    <script src="js/jquery-1.10.2.min.js"></script>
+	    <script src="js/bootstrap.min.js"></script>
+	    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	    <script type="text/javascript" src="js/d3.min.js"></script>
+	    <script src="js/jquery.mtz.monthpicker.js"></script>
+	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+	    <!-- and new libraries to use lastfm -->
+	    <script type="text/javascript" src="js/lastfm.api.cache.js"></script>
+	    <script type="text/javascript" src="js/lastfm.api.md5.js"></script>
+	    <script type="text/javascript" src="js/lastfm.api.js"></script>
+
+		<script src="js/jsrender.js"></script>
+		<script src="js/purl.js"></script>
+		<script src="js/script-ad.js"></script>
+		<script src="js/main-rr.js"></script>
 	</head>
+	
 	<body>
 		<div id="map">
 			<div id="map-canvas"></div>
@@ -44,57 +65,18 @@
 					</div>
 				</div>
 			</div>
+
+			<div id="legendHeaderMin">
+				<p>&#12296;</p>
+				<p>Legend</p>
+			</div>
 			
 			<div id="legend">
-				<ul>
-					<li class="legendItem">
-						<span class="trackLegendColor" id="colorIndicator1"></span>
-						<p class="trackLegendName">Reflektor</p>
-					</li>
-					<li class="legendItem">
-						<span class="trackLegendColor" id="colorIndicator2"></span>
-						<p class="trackLegendName">Do I wanna know?</p>
-					</li>
-					<li class="legendItem">
-						<span class="trackLegendColor" id="colorIndicator3"></span>
-						<p class="trackLegendName">Radioactive</p>
-					</li>
-					<li class="legendItem">
-						<span class="trackLegendColor" id="colorIndicator4"></span>
-						<p class="trackLegendName">Royals</p>
-					</li>
-					<li class="legendItem">
-						<span class="trackLegendColor" id="colorIndicator1"></span>
-						<p class="trackLegendName">Royals</p>
-					</li>
-					<li class="legendItem">
-						<span class="trackLegendColor" id="colorIndicator2"></span>
-						<p class="trackLegendName">Do I wanna know?</p>
-					</li>
-					<li class="legendItem">
-						<span class="trackLegendColor" id="colorIndicator3"></span>
-						<p class="trackLegendName">Radioactive</p>
-					</li>
-					<li class="legendItem">
-						<span class="trackLegendColor" id="colorIndicator4"></span>
-						<p class="trackLegendName">Reflektor</p>
-					</li>
-					<li class="legendItem">
-						<span class="trackLegendColor" id="colorIndicator1"></span>
-						<p class="trackLegendName">Royals</p>
-					</li>
-					<li class="legendItem">
-						<span class="trackLegendColor" id="colorIndicator2"></span>
-						<p class="trackLegendName">Do I wanna know?</p>
-					</li>
-					<li class="legendItem">
-						<span class="trackLegendColor" id="colorIndicator3"></span>
-						<p class="trackLegendName">Radioactive</p>
-					</li>
-					<li class="legendItem">
-						<span class="trackLegendColor" id="colorIndicator4"></span>
-						<p class="trackLegendName">Reflektor</p>
-					</li>
+				<ul id="legendlist">
+					<div id="legendHeaderMax">
+						<p>&#12297;</p>
+						<p>Legend</p>
+					</div>
 		        </ul>
 			</div>
 
@@ -124,11 +106,7 @@
 			</div>
 
 			<div id="videoPlayer">
-				<p> Video player goes here</p>
-			</div>
-
-			<div id="timeSlider">
-				<p> Slider goes here</p>
+				<p> Video player goes here. Div appears only upon clicking a track link.</p>
 			</div>
 
 		</div>
