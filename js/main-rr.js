@@ -33,7 +33,7 @@
     var cityCircle;
     var geocoder;
     var map;
-    var contentString = '<div id="metroChartModal">'+
+    var contentString = '<div id>'+ 
       '<iframe src="toptracks_bars.html" width="700px" height="500px"></iframe>'+
       ' <span id="modalClose">X</span>'+
       '</div>';
@@ -176,19 +176,33 @@ function initialize() {
           var populationOptions = {
             icon: newCityCircle,
             map: map,
+            title: city,
             position: new google.maps.LatLng(citymap[city]['center']['nb'],citymap[city]['center']['ob'] ),
           };
 
           marker = new google.maps.Marker(populationOptions); 
           // On click
-          google.maps.event.addListener(marker, 'click', function(event) {
-            window.alert("this div");
-            codeLatLng(latlng);
+
+        google.maps.event.addListener(marker, 'click', function(event) {
+          //getmodal(marker);
+            // MAPDATA.push(marker.title);
+            // window.alert(marker.title);
+            // infowindow.setContent(marker.title)
+            infowindow.open(map, marker);
           });
+
+         // google.maps.event.trigger(marker, "click");
 
           }
 
       });
+
+   
+
+}
+
+function getmodal(marker) {
+  window.alert(marker.title)
 
 }
 
