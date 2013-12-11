@@ -1,3 +1,4 @@
+//-----RR---------
 /*---Variables------*/
     // define api keys
     var apiKey = 'ef52d33ae515465c74fe383a71089f43';
@@ -24,13 +25,26 @@
     //deferred object: Indicates that all Metros are processed
     var getMetroDataDone = $.Deferred();
 
+//----RR-----
 
+var latlngFile = 'json/metros_latlng.json';
+var ajaxConnections = 1;
+var citymap = {};
+var cityCircle;
 
-/*---Page Load------*/
-$(window).load(function () {
-    console.log("doc load");
-
-    getMetroData();
+$(document).ready(function() {
+  $.getJSON(latlngFile, function (datainner) {
+    console.log("Inside latlng json read");
+    $.each(datainner.metros.metro,function(key,valueinner){
+      console.log("City "+valueinner.name+" Latitude "+valueinner.Latitude+" Longitude "+valueinner.Longitude);
+      citymap[valueinner.name]={center:new google.maps.LatLng(valueinner.Latitude, valueinner.Longitude),population:100};
+    });
+    initialize();
+  }).fail(function() {
+    console.log("FIRST fail");
+  });
+  //------RR---------
+   getMetroData();
 
     //Deferred call to getData and getChartData
     $.when(getMetroDataDone).then(function(){
@@ -45,10 +59,50 @@ $(window).load(function () {
         console.log("Integration Point - RenderData Fn here");
         //TODO - Invoke renderData here
     })
-    
+  //------RR---------
 
 });
 
+//-------VM----------
+
+function initialize() {
+  var mapOptions = {
+    zoom: 3,
+    center: new google.maps.LatLng(37.7002, -122.406)
+  };
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  // For each city make a new Circle. Can set color once the track data is available  
+  for (var city in citymap) {
+    var newCityCircle = {
+        path: 'M 100 100 L 300 100 L 200 300 z',
+        strokeColor:'Green',
+        strokeWeight:6,
+        scale:.01
+    }
+
+    var populationOptions = {
+      icon: newCityCircle,
+      map: map,
+      position: new google.maps.LatLng(citymap[city]['center']['nb'],citymap[city]['center']['ob'] ),
+    };
+
+    marker = new google.maps.Marker(populationOptions); //{
+
+    // On click
+    google.maps.event.addListener(marker, 'click', function() {
+    window.alert("this div");
+    });
+  }
+
+}
+
+//------VM--------
+
+
+//-----RR---------
 /*----getMetroData-----*/
 function getMetroData(){
       $.ajax({
@@ -86,24 +140,22 @@ function getData(){
 var handleDatavar=function handleData() {
     var metro=METROS.metros.metro;
     $.each(metro, function(i, object) {
-        console.log()
-    getTopTracks(object.country, object.name);
+    getTopTracks(object.country);
     });
 }
 
-function getTopTracks(country, metro){
+function getTopTracks(country){
     lastfm.geo.getTopTracks
     ({
-        country:country,
-        location:metro
+        country:country
     },
     {
         success: function(data) {
             TOPTRACKS.push(data);
             console.log(TOPTRACKS); 
-            /*if (TOPTRACKS.length==METROS.metros.metro.length){
+            if (TOPTRACKS.length==METROS.metros.metro.length){
                 getDataDone.resolve(); 
-            }*/
+            }
         },
         error: function(data) {
             console.log("getTopTracks: " + data.error + " " + data.message);
@@ -177,24 +229,4 @@ function getMetroTrackCharts(country, city){
         }
     });
 }
-
-
-/*function getTopTracks(country){
-    lastfm.geo.getTopTracks({
-        country:country,
-        limit: 1
-    },
-    {
-        success: function(data) {
-            //console.log("top artists");
-            console.log(data);
-            $('#top_tracks').html(
-                $('#lastfmTemplateTracks').render(data.toptracks.track)
-            );
-            // do something
-        },
-        error: function(data) {
-            console.log("getTopArtists: " + data.error + " " + data.message);
-        }
-    });
-    }*/
+//-----RR-----

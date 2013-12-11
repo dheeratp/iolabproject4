@@ -24,7 +24,11 @@
     var obj={};
     var objtoptracks={};
     var toptrackslegend=[];
+<<<<<<< HEAD
     var colors=["#eb7f30","#76cc31","#2cb2f1","#f6e742","#E03A37","#E75CB1","#BF2EBD","#6B3F95","#498ebc","#0600BD","#9CD8E0","#6B008F","#863f3a","#FF8FC7","#0E0907","#6C3337","#FF7C0A","#D5BDFF","#936CA3","#CAFA19","#F5FF85"];
+=======
+    var colors=["#BF2EBD","#8460A6","#017DD0","#0600BD","#57EBFF","#6B008F","#FF1100","#FF8FC7","#0E0907","#AD9600","#6C3337","#FF7C0A","#D5BDFF","#936CA3","#CAFA19","#F5FF85","#9AA76C"];
+>>>>>>> 1876b41cec8894ed2d910c4fc035c23b204f0776
     var latlngFile = 'json/metros_latlng.json';
     var citymap = {};
 
@@ -151,7 +155,11 @@ function initialize() {
               path: 'M 100 100 L 300 100 L 200 300 z',
               strokeColor: metrocolor,
               strokeWeight:6,
+<<<<<<< HEAD
               scale:.02
+=======
+              scale:.01
+>>>>>>> 1876b41cec8894ed2d910c4fc035c23b204f0776
           }
 
           var populationOptions = {
