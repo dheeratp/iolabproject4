@@ -149,9 +149,12 @@ function initialize() {
 
              var newCityCircle = {
               path: 'M 100 100 L 300 100 L 200 300 z',
-              strokeColor: metrocolor,
-              strokeWeight:6,
-              scale:.01
+              fillColor: metrocolor,
+              fillOpacity: 0.8,
+              strokeColor: 'FFFFFF',
+              strokeWeight:2,
+              strokeOpacity:0.8,
+              scale:0.12
           }
 
           var populationOptions = {
