@@ -176,9 +176,8 @@ function initialize() {
           marker = new google.maps.Marker(populationOptions); 
           // On click
           google.maps.event.addListener(marker, 'click', function(event) {
-        
-           window.alert("this div");
-           codeLatLng(latlng);
+            window.alert("this div");
+            codeLatLng(latlng);
           });
 
           }
@@ -198,12 +197,14 @@ function codeLatLng(latlng) {
     geocoder.geocode({'latLng': latlng}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[1]) {
+          console.log("in results");
           map.setZoom(5);
           marker = new google.maps.Marker({
               position: latlng,
               map: map
           });
           MAPDATA.push(results[1].formatted_address.split(',')[0]);
+          renderModalData();
           infowindow.setContent(results[1].formatted_address);
           infowindow.open(map, marker);
         }
@@ -213,6 +214,14 @@ function codeLatLng(latlng) {
     });
   }
 
+//binds the data to modal
+function renderModalData(){
+  $.each(TOPTRACKS, function(i, val) {
+       console.log(val);
+    });
+
+
+}
 /*----getMetroData-----*/
 function getMetroData(){
       $.ajax({
