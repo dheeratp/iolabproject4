@@ -18,6 +18,7 @@
     var TOPTRACKS = [];
     var TOPCHARTS =[];
     var METROS={};
+    var MAPDATA=[];
 
     //use these for displaying legend
     var ALLTOPTRACKS = [];
@@ -27,6 +28,13 @@
     var colors=["#E03A37","#eb7f30","#BF2EBD","#2cb2f1","#6B3F95","#f6e742","#E75CB1","#498ebc","#0600BD","#6C3337","#9CD8E0","#FF8FC7","#edaa5c","#c4adeb"];
     var latlngFile = 'json/metros_latlng.json';
     var citymap = {};
+
+    //map vars
+    var cityCircle;
+    var geocoder;
+    var map;
+    var infowindow = new google.maps.InfoWindow();
+    var marker;
 
     //deferred object: Indicates that all TOPTRACKS are processed
     var getDataDone = $.Deferred();
@@ -82,13 +90,15 @@ $(window).load(function () {
 function initialize() {
 
   // Create the map.
+  geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng(37.7002, -122.406);
   var mapOptions = {
-    zoom: 4,
-    center: new google.maps.LatLng(37.09024, -95.712891),
-    mapTypeId: google.maps.MapTypeId.TERRAIN
+    zoom: 3,
+    center: latlng
   };
   var map = new google.maps.Map(document.getElementById('map-canvas'),
   mapOptions);
+
 
   //get top track for each metro: {cityname:track}
   
@@ -163,12 +173,12 @@ function initialize() {
             position: new google.maps.LatLng(citymap[city]['center']['nb'],citymap[city]['center']['ob'] ),
           };
 
-          marker = new google.maps.Marker(populationOptions); //{
-
+          marker = new google.maps.Marker(populationOptions); 
           // On click
-          google.maps.event.addListener(marker, 'click', function() {
-
-          window.alert("this div");
+          google.maps.event.addListener(marker, 'click', function(event) {
+        
+           window.alert("this div");
+           codeLatLng(latlng);
           });
 
           }
@@ -177,6 +187,31 @@ function initialize() {
 
 }
 
+function codeLatLng(latlng) {
+    console.log("codelatlng");
+    console.log("latlng in code fn");
+    console.log(latlng);
+    var input = latlng;
+    var lat = parseFloat(latlng.nb);
+    var lng = parseFloat(latlng.ob);
+    var latlng = new google.maps.LatLng(lat, lng);
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[1]) {
+          map.setZoom(5);
+          marker = new google.maps.Marker({
+              position: latlng,
+              map: map
+          });
+          MAPDATA.push(results[1].formatted_address.split(',')[0]);
+          infowindow.setContent(results[1].formatted_address);
+          infowindow.open(map, marker);
+        }
+      } else {
+        alert("Geocoder failed due to: " + status);
+      }
+    });
+  }
 
 /*----getMetroData-----*/
 function getMetroData(){
