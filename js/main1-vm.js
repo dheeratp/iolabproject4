@@ -34,7 +34,13 @@ var citymap = {};
 var cityCircle;
 var geocoder;
 var map;
-var infowindow = new google.maps.InfoWindow();
+var contentString = '<div id="metroChartModal">'+
+      '<iframe src="toptracks_bars.html" width="700px" height="500px"></iframe>'+
+      ' <span id="modalClose">X</span>'+
+      '</div>';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });    
 var marker;
 
 $(document).ready(function() {
